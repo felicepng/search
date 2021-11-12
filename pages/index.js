@@ -32,31 +32,36 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen min-w-screen">
+    <div className="font-body flex flex-col items-center justify-center min-h-screen min-w-screen">
       <Head>
         <title>Search</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </Head>
 
-      <main className="w-full flex-1">
-        {/* <Searchbar /> */}
-        {
-          <div className="px-32 font-semibold text-primary text-2xl">
-            Showing 1 - {searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
-          </div>
-        }
-        {
-          searchData?.ResultItems?.map(item => (
-            <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} />
-          ))
-        }
-        {/* {suggestionData?.stemmedQueryTerm} */}
-        {/* {
+      <div className="w-full grid grid-cols-3">
+        <div className="col-span-2">
+          {/* <Searchbar /> */}
+          {
+            <div className="px-36 font-semibold text-primary text-2xl">
+              Showing 1 - {searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
+            </div>
+          }
+          {
+            searchData?.ResultItems?.map(item => (
+              <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} />
+            ))
+          }
+          {/* {suggestionData?.stemmedQueryTerm} */}
+          {/* {
           suggestionData?.suggestions?.map((item, index) => (
             <div key={index}>{item}</div>
           ))
         } */}
-      </main>
+        </div>
+      </div>
     </div>
   )
 }

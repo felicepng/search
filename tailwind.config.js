@@ -10,6 +10,9 @@ module.exports = {
         secondary: '#424242',
         tertiary: '#686868'
       },
+      fontFamily: {
+        'body': ['Open Sans', 'sans-serif'],
+      }
     },
   },
   variants: {

@@ -4,13 +4,13 @@ const SearchResult = (props) => {
   const router = useRouter();
 
   return (
-    <div className="w-full py-8 hover:bg-gray-50 cursor-pointer px-32"
+    <div className="w-full py-7 px-36">
+      <div className="text-theme text-2xl font-semibold cursor-pointer  hover:underline"
       onClick={() => router.push(props.uri)}
-    >
-      <div className="text-theme text-2xl font-semibold">
+      >
         {props.title}
       </div>
-      <div className="text-secondary mt-3">
+      <div className="text-secondary mt-3 leading-relaxed">
         <span>1 Sep 2021 — </span>
         {props.text}
       </div>
