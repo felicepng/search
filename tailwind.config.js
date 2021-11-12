@@ -8,11 +8,15 @@ module.exports = {
         theme: '#1C76D5',
         primary: '#282828',
         secondary: '#424242',
-        tertiary: '#686868'
+        tertiary: '#686868',
+        header: '#F0F0F0',
       },
       fontFamily: {
         'body': ['Open Sans', 'sans-serif'],
-      }
+      },
+      boxShadow: {
+        search: '0px 4px 8px 4px rgba(224, 228, 229, 0.35)',
+      },
     },
   },
   variants: {

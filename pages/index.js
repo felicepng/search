@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import Searchbar from '../components/Searchbar'
+import SearchBar from '../components/SearchBar'
 import SearchResult from '../components/SearchResult'
 import axios from 'axios'
 
@@ -41,11 +41,12 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </Head>
 
-      <div className="w-full grid grid-cols-3">
+      <SearchBar />
+
+      <div className="w-full grid grid-cols-3 px-44 py-11">
         <div className="col-span-2">
-          {/* <Searchbar /> */}
           {
-            <div className="px-36 font-semibold text-primary text-2xl">
+            <div className="font-medium text-primary text-2xl mt-2 mb-4">
               Showing 1 - {searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
             </div>
           }
