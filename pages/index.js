@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Searchbar from '../components/Searchbar'
+import SearchResult from '../components/SearchResult'
 import axios from 'axios'
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
     return axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json")
       .then((response) => {
         // console.log(response);
-        const mySearchData = response.data.ResultItems;
+        const mySearchData = response.data;
         setSearchData(mySearchData);
       });
   };
@@ -37,15 +38,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full flex-1">
+      <main className="w-full flex-1 px-20">
         {/* <Searchbar /> */}
         {
-          searchData?.map(item => (
-            <div key={item.DocumentId}>
-              {item.DocumentTitle.Text}
-              {item.DocumentExcerpt.Text}
-              {item.DocumentURI}
-            </div>
+          <div>
+            Showing 1 - {searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
+          </div>
+        }
+        {
+          searchData?.ResultItems?.map(item => (
+            <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} />
           ))
         }
         {/* {suggestionData?.stemmedQueryTerm} */}
