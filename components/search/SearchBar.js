@@ -4,7 +4,7 @@ import { MdOutlineClear } from 'react-icons/md';
 import SuggestionList from '../suggestion/SuggestionList';
 
 const SearchBar = (props) => {
-  const { searchText, setSearchText } = props;
+  const { searchInput, setSearchInput, setSearchQuery } = props;
   const [focused, setFocused] = useState(false);
 
   return (
@@ -21,27 +21,34 @@ const SearchBar = (props) => {
             onBlur={() => setFocused(false)}
           >
             <div className="flex w-full items-center">
-              <input placeholder="Search..." value={searchText} className="py-0 focus:outline-none w-full h-full"
-                onChange={e => setSearchText(e.target.value)}
+              <input placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
+                onChange={e => setSearchInput(e.target.value)}
               />
               {
-                searchText !== "" &&
+                searchInput !== "" &&
                 <MdOutlineClear className="w-5 h-5 text-secondary hover:text-black cursor-pointer"
-                  onClick={() => setSearchText("")}
+                  onClick={() => {
+                    setSearchInput("");
+                    setSearchQuery("");
+                  }}
                 />
               }
             </div>
           </div>
-          <div className="font-medium cursor-pointer w-36 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white">
+          <div className="font-medium cursor-pointer w-36 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white"
+            onClick={() => {
+              setSearchQuery(searchInput);
+            }}
+          >
             <IoSearchSharp className="w-5 h-5 text-white mr-2" />
             Search
           </div>
         </div>
 
         {
-          searchText.length > 2 &&
+          searchInput.length > 2 &&
           <div className="flex items-center justify-center w-full">
-            <SuggestionList searchText={searchText} setSearchText={setSearchText}/>
+            <SuggestionList searchInput={searchInput} setSearchInput={setSearchInput} setSearchQuery={setSearchQuery} />
             <div className="w-36" />
           </div>
         }

@@ -6,18 +6,16 @@ import axios from 'axios';
 
 export default function Home() {
   const [searchData, setSearchData] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchSearchData = () => {
-    try {
-      axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json")
-        .then((response) => {
-          const mySearchData = response.data;
-          setSearchData(mySearchData);
-        });
-    } catch (e) {
-      console.log(e);
-    }
+    axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json")
+      .then((response) => {
+        const mySearchData = response.data;
+        setSearchData(mySearchData);
+      })
+      .catch(e => console.log(e));
   };
 
   useEffect(() => {
@@ -34,19 +32,22 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </Head>
 
-      <SearchBar searchText={searchText} setSearchText={setSearchText} />
+      <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} setSearchQuery={setSearchQuery} />
 
       <div className="w-full grid grid-cols-3 px-40 py-9">
         <div className="col-span-2">
           {
-            <div className="font-medium text-primary text-lg mb-3">
-              Showing 1-{searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
+            searchQuery !== "" &&
+            <div>
+              <div className="font-medium text-primary text-lg mb-3">
+                Showing 1-{searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
+              </div>
+              {
+                searchData?.ResultItems?.map(item => (
+                  <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} />
+                ))
+              }
             </div>
-          }
-          {
-            searchData?.ResultItems?.map(item => (
-              <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchText={searchText} />
-            ))
           }
         </div>
       </div>
