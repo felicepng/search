@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IoSearchSharp } from 'react-icons/io5';
 import { MdOutlineClear } from 'react-icons/md';
+import SuggestionList from '../suggestion/SuggestionList';
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
@@ -31,7 +32,7 @@ const SearchBar = () => {
               }
             </div>
           </div>
-          <div className="font-medium cursor-pointer w-44 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white">
+          <div className="font-medium cursor-pointer w-48 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white">
             <IoSearchSharp className="w-6 h-6 text-white mr-2" />
             Search
           </div>
@@ -40,10 +41,10 @@ const SearchBar = () => {
         {
           searchText.length > 2 &&
           <div className="flex items-center justify-center w-full">
-            <div className="bg-white shadow-md rounded-b-lg h-96 w-full">
-              Suggestions
+            <div className="bg-white shadow-md rounded-b-lg h-full pb-5 w-full">
+              <SuggestionList />
             </div>
-            <div className="w-44" />
+            <div className="w-48" />
           </div>
         }
 
