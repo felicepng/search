@@ -4,8 +4,7 @@ import boldSearchInput from '../../utils/boldSearchInput';
 
 const SuggestionList = (props) => {
   const [suggestionData, setSuggestionData] = useState([]);
-  const { searchInput, setSearchInput, setSearchQuery } = props;
-  const [isVisible, setIsVisible] = useState(true);
+  const { searchInput, setSearchInput, setSearchQuery, setIsVisible } = props;
 
   const fetchSuggestionData = () => {
     axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/e026dab444155edf2f52122aefbb80347c68de86/suggestion.json")
@@ -29,6 +28,7 @@ const SuggestionList = (props) => {
             onClick={() => {
               setSearchQuery(item);
               setSearchInput(item);
+              setIsVisible(false);
             }}
           >
             <div dangerouslySetInnerHTML={{ __html: boldSearchInput(item, searchInput.toLowerCase().trim()) }} />
