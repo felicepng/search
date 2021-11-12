@@ -9,8 +9,8 @@ const SearchBar = () => {
 
   return (
     <div className="z-50 sticky top-0 w-full">
-      <div className="flex h-5 bg-header text-gray-500 items-center text-xxs px-40">
-        <img src="/logo.png" className="w-5 mr-2" />
+      <div className="flex h-6 bg-header text-gray-500 items-center text-xxs pl-40">
+        <img src="/logo.png" className="w-4 mr-1" />
         An Official Website of the <span className="font-semibold ml-1"> Singapore Government</span>
       </div>
 
@@ -21,7 +21,7 @@ const SearchBar = () => {
             onBlur={() => setFocused(false)}
           >
             <div className="flex w-full items-center">
-              <input placeholder="Search..." value={searchText} className="focus:outline-none rounded-lg w-full"
+              <input placeholder="Search..." value={searchText} className="py-0 focus:outline-none w-full h-full"
                 onChange={e => setSearchText(e.target.value)}
               />
               {

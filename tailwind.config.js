@@ -18,8 +18,9 @@ module.exports = {
         search: '0px 4px 8px 4px rgba(224, 228, 229, 0.35)',
       },
       fontSize: {
-        xxs: '9.89px',
-        link: '11px',
+        xxs: '9px',
+        uri: '11px',
+        text: '13px',
       },
     },
   },

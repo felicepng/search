@@ -5,12 +5,15 @@ const SuggestionList = () => {
   const [suggestionData, setSuggestionData] = useState([]);
 
   const fetchSuggestionData = () => {
-    return axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/e026dab444155edf2f52122aefbb80347c68de86/suggestion.json")
-      .then((response) => {
-        // console.log(response);
-        const mySuggestionData = response.data;
-        setSuggestionData(mySuggestionData);
-      });
+    try {
+      axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/e026dab444155edf2f52122aefbb80347c68de86/suggestion.json")
+        .then((response) => {
+          const mySuggestionData = response.data;
+          setSuggestionData(mySuggestionData);
+        });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
@@ -21,7 +24,7 @@ const SuggestionList = () => {
     <div className="w-full h-full">
       {
         suggestionData?.suggestions?.map((item, index) => (
-          <div key={index} className="px-7 pt-4">
+          <div key={index} className="px-5 pt-4">
             {item}
           </div>
         ))

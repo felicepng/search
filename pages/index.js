@@ -8,12 +8,15 @@ export default function Home() {
   const [searchData, setSearchData] = useState([]);
 
   const fetchSearchData = () => {
-    return axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json")
-      .then((response) => {
-        // console.log(response);
-        const mySearchData = response.data;
-        setSearchData(mySearchData);
-      });
+    try {
+      axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json")
+        .then((response) => {
+          const mySearchData = response.data;
+          setSearchData(mySearchData);
+        });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
@@ -36,7 +39,7 @@ export default function Home() {
         <div className="col-span-2">
           {
             <div className="font-medium text-primary text-lg mb-3">
-              Showing 1 - {searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
+              Showing 1-{searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
             </div>
           }
           {
