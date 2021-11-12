@@ -32,10 +32,10 @@ export default function Home() {
 
       <SearchBar />
 
-      <div className="w-full grid grid-cols-3 px-44 py-11">
+      <div className="w-full grid grid-cols-3 px-40 py-9">
         <div className="col-span-2">
           {
-            <div className="font-medium text-primary text-2xl mt-2 mb-4">
+            <div className="font-medium text-primary text-lg mb-3">
               Showing 1 - {searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
             </div>
           }
