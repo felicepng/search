@@ -3,8 +3,8 @@ import { IoSearchSharp } from 'react-icons/io5';
 import { MdOutlineClear } from 'react-icons/md';
 import SuggestionList from '../suggestion/SuggestionList';
 
-const SearchBar = () => {
-  const [searchText, setSearchText] = useState("");
+const SearchBar = (props) => {
+  const { searchText, setSearchText } = props;
   const [focused, setFocused] = useState(false);
 
   return (
@@ -41,9 +41,7 @@ const SearchBar = () => {
         {
           searchText.length > 2 &&
           <div className="flex items-center justify-center w-full">
-            <div className="bg-white shadow-md rounded-b-lg h-full pb-5 w-full">
-              <SuggestionList />
-            </div>
+            <SuggestionList searchText={searchText} setSearchText={setSearchText}/>
             <div className="w-36" />
           </div>
         }

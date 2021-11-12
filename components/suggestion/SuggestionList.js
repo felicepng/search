@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import boldSearchText from '../../utils/boldSearchText';
 
-const SuggestionList = () => {
+const SuggestionList = (props) => {
   const [suggestionData, setSuggestionData] = useState([]);
+  const { searchText, setSearchText } = props;
 
   const fetchSuggestionData = () => {
     try {
@@ -21,11 +23,14 @@ const SuggestionList = () => {
   }, [])
 
   return (
-    <div className="w-full h-full">
+    <div className="bg-white shadow-md rounded-b-lg h-full w-full">
       {
         suggestionData?.suggestions?.map((item, index) => (
-          <div key={index} className="px-5 pt-4">
-            {item}
+          item.includes(searchText.toLowerCase().trim()) &&
+          <div key={index} className="px-5 py-2.5 hover:bg-gray-100 cursor-pointer"
+            onClick={() => setSearchText(item)}
+          >
+            <div dangerouslySetInnerHTML={{ __html: boldSearchText(item, searchText.toLowerCase().trim()) }} />
           </div>
         ))
       }

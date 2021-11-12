@@ -6,6 +6,7 @@ import axios from 'axios';
 
 export default function Home() {
   const [searchData, setSearchData] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const fetchSearchData = () => {
     try {
@@ -24,7 +25,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="font-body flex flex-col items-center justify-center min-h-screen min-w-screen">
+    <div className="font-body flex flex-col items-center justify-start min-h-screen min-w-screen">
       <Head>
         <title>Search</title>
         <link rel="icon" href="/logo.png" />
@@ -33,7 +34,7 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </Head>
 
-      <SearchBar />
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
 
       <div className="w-full grid grid-cols-3 px-40 py-9">
         <div className="col-span-2">
@@ -44,7 +45,7 @@ export default function Home() {
           }
           {
             searchData?.ResultItems?.map(item => (
-              <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} />
+              <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchText={searchText} />
             ))
           }
         </div>
