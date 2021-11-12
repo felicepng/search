@@ -1,14 +1,20 @@
+import { useRouter } from "next/router";
+
 const SearchResult = (props) => {
+  const router = useRouter();
+
   return (
-    <div className="w-full py-10">
-      <div className="text-blue-500 font-semibold">
+    <div className="w-full py-8 hover:bg-gray-50 cursor-pointer px-32"
+      onClick={() => router.push(props.uri)}
+    >
+      <div className="text-theme text-2xl font-semibold">
         {props.title}
       </div>
-      <div className="text-gray-500 text-sm">
-        <span>1 Sep 2021 - </span>
+      <div className="text-secondary mt-3">
+        <span>1 Sep 2021 — </span>
         {props.text}
       </div>
-      <div className="text-gray-400 text-xs">
+      <div className="text-tertiary text-sm font-light mt-4">
         {props.uri}
       </div>
     </div>

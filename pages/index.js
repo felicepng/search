@@ -38,10 +38,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full flex-1 px-20">
+      <main className="w-full flex-1">
         {/* <Searchbar /> */}
         {
-          <div>
+          <div className="px-32 font-semibold text-primary text-2xl">
             Showing 1 - {searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
           </div>
         }
