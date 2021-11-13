@@ -1,22 +1,40 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "antd": "^4.16.13",
-    "axios": "^0.24.0",
-    "lodash": "^4.17.21",
-    "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4"
-  }
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "test": "jest"
+    },
+    "dependencies": {
+        "antd": "^4.16.13",
+        "axios": "^0.24.0",
+        "babel-jest": "^27.3.1",
+        "jest-cli": "^27.3.1",
+        "lodash": "^4.17.21",
+        "next": "latest",
+        "react": "^17.0.2",
+        "react-addons-test-utils": "^15.6.2",
+        "react-dom": "^17.0.2",
+        "react-icons": "^4.3.1"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
+    },
+    "jest": {
+        "unmockedModulePathPatterns": [
+            "<rootDir>/node_modules/react",
+            "<rootDir>/node_modules/react-dom",
+            "<rootDir>/node_modules/react-addons-test-utils",
+            "<rootDir>/node_modules/fbjs"
+        ]
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.16.0",
+        "autoprefixer": "^10.2.6",
+        "postcss": "^8.3.5",
+        "tailwindcss": "^2.2.4"
+    }
 }
