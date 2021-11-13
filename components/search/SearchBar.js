@@ -3,11 +3,13 @@ import { IoSearchSharp } from 'react-icons/io5';
 import { MdOutlineClear } from 'react-icons/md';
 import SuggestionResults from '../suggestion/SuggestionResults';
 import { AppContext } from '../../utils/AppContext';
+import useComponentVisible from '../../utils/useComponentVisible';
 
 const SearchBar = () => {
   const [focused, setFocused] = useState(false);
   const { searchInput, setSearchInput, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible, filteredSuggestionLength, activeQuery } = useContext(AppContext);
   const [activeKey, setActiveKey] = useState(-1);
+  const { ref, isComponentVisible } = useComponentVisible(true);
 
   // set cursor focus after clearing search
   const useFocus = () => {
@@ -28,7 +30,7 @@ const SearchBar = () => {
         An Official Website of the <span className="font-semibold ml-1"> Singapore Government</span>
       </div>
 
-      <div className="text-sm absolute z-50 flex flex-col w-full items-center px-10 md:px-32 lg:px-40 pt-6 md:pt-8"
+      <div ref={ref} className="text-sm absolute z-50 flex flex-col w-full items-center px-10 md:px-32 lg:px-40 pt-6 md:pt-8"
         onClick={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       >
@@ -79,7 +81,7 @@ const SearchBar = () => {
         </div>
 
         {
-          searchInput.length > 2 && isSuggestionVisible &&
+          searchInput.length > 2 && isSuggestionVisible && isComponentVisible &&
           <div className="-mt-3 md:mt-0 scale-90 md:scale-100 flex items-center justify-center w-full">
             <SuggestionResults activeKey={activeKey} />
             <div className="w-36" />
