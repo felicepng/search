@@ -25,9 +25,17 @@ const SearchBar = () => {
               <input placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
                 onChange={e => setSearchInput(e.target.value)}
                 onKeyPress={e => {
-                  e.key === 'Enter' &&
+                  if (e.key === 'Enter') {
                     setSearchQuery(e.target.value);
-                  setIsSuggestionVisible(false);
+                    setIsSuggestionVisible(false);
+                  } else {
+                    setIsSuggestionVisible(true);
+                    // if (e.key === 'ArrowUp') {  // "up key"
+                    //   console.log('Up');
+                    // } else if (e.key === 'ArrowDown') {  // "down" key
+                    //   console.log('Down');
+                    // }
+                  }
                 }}
                 onClick={() => setIsSuggestionVisible(true)}
               />
@@ -53,7 +61,7 @@ const SearchBar = () => {
         </div>
 
         {
-          searchInput.length > 2 &&
+          searchInput.length > 2 && isSuggestionVisible && 
           <div className="flex items-center justify-center w-full">
             <SuggestionResults />
             <div className="w-36" />
