@@ -2,24 +2,16 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import SearchBar from '../components/search/SearchBar';
 import SearchResult from '../components/search/SearchResult';
-import axios from 'axios';
+import fetchSearchData from '../data/fetchSearchData';
+import _ from 'lodash';
 
 export default function Home() {
   const [searchData, setSearchData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const fetchSearchData = () => {
-    axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json")
-      .then((response) => {
-        const mySearchData = response.data;
-        setSearchData(mySearchData);
-      })
-      .catch(e => console.log(e));
-  };
-
   useEffect(() => {
-    fetchSearchData();
+    fetchSearchData(setSearchData);
   }, [])
 
   return (
@@ -28,7 +20,7 @@ export default function Home() {
         <title>Search</title>
         <link rel="icon" href="/logo.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </Head>
 
@@ -40,7 +32,7 @@ export default function Home() {
             searchQuery !== "" &&
             <div>
               <div className="font-medium text-primary text-lg mb-3">
-                Showing 1-{searchData?.PageSize} of {searchData?.TotalNumberOfResults} results
+                Showing 1-10 of {searchData?.ResultItems?.length} results
               </div>
               {
                 searchData?.ResultItems?.map(item => (
