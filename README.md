@@ -14,7 +14,7 @@ yarn
 yarn dev
 ```
 
-Navigate to http://localhost:3000 to interact with the application.
+Navigate to http://localhost:3000 using Safari or Google Chrome to interact with the application.
 
 ---
 
