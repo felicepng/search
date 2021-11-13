@@ -1,18 +1,12 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import SearchBar from '../components/search/SearchBar';
-import SearchResult from '../components/search/SearchResult';
-import fetchSearchData from '../data/fetchSearchData';
+import SearchResults from '../components/search/SearchResults';
 import _ from 'lodash';
 
 export default function Home() {
-  const [searchData, setSearchData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    fetchSearchData(setSearchData);
-  }, [])
 
   return (
     <div className="font-body flex flex-col items-center justify-start min-h-screen min-w-screen">
@@ -25,24 +19,8 @@ export default function Home() {
       </Head>
 
       <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} setSearchQuery={setSearchQuery} />
+      <SearchResults searchQuery={searchQuery} />
 
-      <div className="w-full grid grid-cols-3 px-40 py-9">
-        <div className="col-span-2">
-          {
-            searchQuery !== "" &&
-            <div>
-              <div className="font-medium text-primary text-lg mb-3">
-                Showing 1-10 of {searchData?.ResultItems?.length} results
-              </div>
-              {
-                searchData?.ResultItems?.map(item => (
-                  <SearchResult key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} />
-                ))
-              }
-            </div>
-          }
-        </div>
-      </div>
     </div>
   )
 }

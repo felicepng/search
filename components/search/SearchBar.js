@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IoSearchSharp } from 'react-icons/io5';
 import { MdOutlineClear } from 'react-icons/md';
-import SuggestionList from '../suggestion/SuggestionList';
+import SuggestionResults from '../suggestion/SuggestionResults';
 
 const SearchBar = (props) => {
   const { searchInput, setSearchInput, setSearchQuery } = props;
@@ -15,12 +15,12 @@ const SearchBar = (props) => {
         An Official Website of the <span className="font-semibold ml-1"> Singapore Government</span>
       </div>
 
-      <div className="text-sm absolute z-50 flex flex-col w-full items-center px-40 pt-8">
+      <div className="text-sm absolute z-50 flex flex-col w-full items-center px-40 pt-8"
+        onClick={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+      >
         <div className={`flex items-center justify-center h-11 w-full border rounded-lg ${focused ? 'border-theme' : 'border-gray-400'}`}>
-          <div className="flex flex-col w-full justify-between items-center px-5"
-            onClick={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-          >
+          <div className="flex flex-col w-full justify-between items-center px-5">
             <div className="flex w-full items-center">
               <input placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
                 onChange={e => setSearchInput(e.target.value)}
@@ -55,7 +55,7 @@ const SearchBar = (props) => {
         {
           searchInput.length > 2 && isVisible &&
           <div className="flex items-center justify-center w-full">
-            <SuggestionList searchInput={searchInput} setSearchInput={setSearchInput} setSearchQuery={setSearchQuery} setIsVisible={setIsVisible} />
+            <SuggestionResults searchInput={searchInput} setSearchInput={setSearchInput} setSearchQuery={setSearchQuery} setIsVisible={setIsVisible} />
             <div className="w-36" />
           </div>
         }

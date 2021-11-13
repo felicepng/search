@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import boldSearchInput from '../../utils/boldSearchInput';
 import fetchSuggestionData from '../../data/fetchSuggestionData';
 
-const SuggestionList = (props) => {
+const SuggestionResults = (props) => {
   const [suggestionData, setSuggestionData] = useState([]);
   const { searchInput, setSearchInput, setSearchQuery, setIsVisible } = props;
 
@@ -30,4 +30,4 @@ const SuggestionList = (props) => {
   )
 }
 
-export default SuggestionList;
+export default SuggestionResults;
