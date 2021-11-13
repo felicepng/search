@@ -16,7 +16,7 @@ describe("Filter suggestion", () => {
     expect(filteredSuggestion(input, "  Child  ").length).toEqual(6);
   });
 
-  it("should filter correctly for multiple terms", () => {
-    expect(filteredSuggestion(input, "Child de").length).toEqual(1);
+  it("should filter correctly for terms excluding child", () => {
+    expect(filteredSuggestion(input, "dev").length).toEqual(1);
   });
 });
