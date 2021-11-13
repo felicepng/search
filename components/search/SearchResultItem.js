@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import boldSearch from '../../utils/boldSearch';
-import _ from 'lodash';
 
 const SearchResultItem = (props) => {
   const router = useRouter();

@@ -11,7 +11,7 @@ const SearchBar = () => {
   const [activeKey, setActiveKey] = useState(-1);
   const { ref, isComponentVisible } = useComponentVisible(true);
 
-  // set cursor focus after clearing search
+  // set cursor focused after clearing search
   const useFocus = () => {
     const htmlElRef = useRef(null)
     const setFocus = () => {

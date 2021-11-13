@@ -6,7 +6,22 @@ const fetchSearchData = (setSearchData) => {
       const mySearchData = response.data;
       setSearchData(mySearchData);
     })
-    .catch(e => console.log("Error in fetchSearchData: " + e));
+    .catch(e => {
+      if (e.response) {
+        // request was made, server responded with a status code outside of 2xx
+        console.log(e.response.data);
+        console.log(e.response.status);
+        console.log(e.response.headers);
+      } else if (e.request) {
+        // request was made but no response received
+        console.log(e.request);
+      } else {
+        // something happened in setting up the request that triggered an error
+        console.log('Error', e.message);
+        console.log("Error in fetchSearchData: " + e.message)
+      }
+      console.log(e.config);
+    });
 };
 
 export default fetchSearchData;
