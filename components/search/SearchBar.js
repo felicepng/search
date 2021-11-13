@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { IoSearchSharp } from 'react-icons/io5';
 import { MdOutlineClear } from 'react-icons/md';
 import SuggestionResults from '../suggestion/SuggestionResults';
@@ -7,6 +7,17 @@ import { AppContext } from '../../utils/AppContext';
 const SearchBar = () => {
   const [focused, setFocused] = useState(false);
   const { searchInput, setSearchInput, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible } = useContext(AppContext);
+
+  const useFocus = () => {  // set cursor focus after clearing search
+    const htmlElRef = useRef(null)
+    const setFocus = () => {
+      htmlElRef.current && htmlElRef.current.focus();
+      setSearchInput("");
+    }
+    return [htmlElRef, setFocus]
+  }
+
+  const [inputRef, setInputFocus] = useFocus()
 
   return (
     <div className="z-50 sticky top-0 w-full">
@@ -22,7 +33,7 @@ const SearchBar = () => {
         <div className={`flex items-center justify-center h-11 w-full border rounded-lg ${focused ? 'border-theme' : 'border-gray-400'}`}>
           <div className="flex flex-col w-full justify-between items-center px-5">
             <div className="flex w-full items-center">
-              <input placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
+              <input ref={inputRef} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
                 onChange={e => setSearchInput(e.target.value)}
                 onKeyPress={e => {
                   if (e.key === 'Enter') {
@@ -42,9 +53,7 @@ const SearchBar = () => {
               {
                 searchInput !== "" &&
                 <MdOutlineClear className="w-5 h-5 text-secondary hover:text-black cursor-pointer"
-                  onClick={() => {
-                    setSearchInput("");
-                  }}
+                  onClick={setInputFocus}
                 />
               }
             </div>
@@ -61,7 +70,7 @@ const SearchBar = () => {
         </div>
 
         {
-          searchInput.length > 2 && isSuggestionVisible && 
+          searchInput.length > 2 && isSuggestionVisible &&
           <div className="flex items-center justify-center w-full">
             <SuggestionResults />
             <div className="w-36" />
