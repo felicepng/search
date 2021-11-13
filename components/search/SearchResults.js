@@ -21,7 +21,7 @@ const SearchResults = () => {
   }, [])
 
   return (
-    <div className="w-full grid grid-cols-3 px-40 py-9">
+    <div className="w-full lg:grid lg:grid-cols-3 px-16 md:px-32 lg:px-40 py-8 md:py-9">
       <div className="col-span-2">
         {
           searchQuery !== "" &&
@@ -29,7 +29,7 @@ const SearchResults = () => {
             {/* assuming number of total results shown changes dynamically according to search query */}
             {
               len !== 0 &&
-              <div className="font-medium text-primary text-lg mb-3">
+              <div className="font-medium text-primary text-md md:text-lg mb-3">
                 Showing 1-{len < PAGE_LIMIT ? len : PAGE_LIMIT} of {len} result{len !== 1 && 's'}
               </div>
             }
