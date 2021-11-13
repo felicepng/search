@@ -6,7 +6,7 @@ const fetchSuggestionData = (setSuggestionData) => {
       const mySuggestionData = response.data;
       setSuggestionData(mySuggestionData);
     })
-    .catch(e => console.log(e));
+    .catch(e => console.log("Error in fetchSuggestionData: " + e));
 };
 
 export default fetchSuggestionData;

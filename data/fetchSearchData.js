@@ -6,7 +6,7 @@ const fetchSearchData = (setSearchData) => {
       const mySearchData = response.data;
       setSearchData(mySearchData);
     })
-    .catch(e => console.log(e));
+    .catch(e => console.log("Error in fetchSearchData: " + e));
 };
 
 export default fetchSearchData;
