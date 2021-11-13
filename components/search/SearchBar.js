@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
 import { IoSearchSharp } from 'react-icons/io5';
 import { MdOutlineClear } from 'react-icons/md';
 import SuggestionResults from '../suggestion/SuggestionResults';
+import { AppContext } from '../../utils/AppContext';
 
-const SearchBar = (props) => {
-  const { searchInput, setSearchInput, setSearchQuery } = props;
+const SearchBar = () => {
   const [focused, setFocused] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
+  const { searchInput, setSearchInput, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible } = useContext(AppContext);
 
   return (
     <div className="z-50 sticky top-0 w-full">
@@ -27,9 +27,9 @@ const SearchBar = (props) => {
                 onKeyPress={e => {
                   e.key === 'Enter' &&
                     setSearchQuery(e.target.value);
-                  setIsVisible(false);
+                  setIsSuggestionVisible(false);
                 }}
-                onClick={() => setIsVisible(true)}
+                onClick={() => setIsSuggestionVisible(true)}
               />
               {
                 searchInput !== "" &&
@@ -44,7 +44,7 @@ const SearchBar = (props) => {
           <div className="font-medium cursor-pointer w-36 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white"
             onClick={() => {
               setSearchQuery(searchInput);
-              setIsVisible(false);
+              setIsSuggestionVisible(false);
             }}
           >
             <IoSearchSharp className="w-5 h-5 text-white mr-2" />
@@ -53,9 +53,9 @@ const SearchBar = (props) => {
         </div>
 
         {
-          searchInput.length > 2 && isVisible &&
+          searchInput.length > 2 &&
           <div className="flex items-center justify-center w-full">
-            <SuggestionResults searchInput={searchInput} setSearchInput={setSearchInput} setSearchQuery={setSearchQuery} setIsVisible={setIsVisible} />
+            <SuggestionResults />
             <div className="w-36" />
           </div>
         }

@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import fetchSearchData from "../../data/fetchSearchData";
 import SearchResultItem from './SearchResultItem';
+import { AppContext } from '../../utils/AppContext';
 
-const SearchResults = (props) => {
+const SearchResults = () => {
   const [searchData, setSearchData] = useState([]);
-  const { searchQuery } = props;
+  const { searchQuery } = useContext(AppContext);
 
   useEffect(() => {
     fetchSearchData(setSearchData);

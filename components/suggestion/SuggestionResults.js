@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import boldSearchInput from '../../utils/boldSearchInput';
 import fetchSuggestionData from '../../data/fetchSuggestionData';
+import { AppContext } from '../../utils/AppContext';
 
-const SuggestionResults = (props) => {
+const SuggestionResults = () => {
   const [suggestionData, setSuggestionData] = useState([]);
-  const { searchInput, setSearchInput, setSearchQuery, setIsVisible } = props;
+  const { searchInput, setSearchInput, setSearchQuery, setIsSuggestionVisible } = useContext(AppContext);
 
   useEffect(() => {
     fetchSuggestionData(setSuggestionData);
@@ -19,7 +20,7 @@ const SuggestionResults = (props) => {
             onClick={() => {
               setSearchQuery(item);
               setSearchInput(item);
-              setIsVisible(false);
+              setIsSuggestionVisible(false);
             }}
           >
             <div dangerouslySetInnerHTML={{ __html: boldSearchInput(item, searchInput.toLowerCase().trim()) }} />

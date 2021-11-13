@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { useRouter } from "next/router";
 import boldSearchInput from "../../utils/boldSearchInput";
+import { AppContext } from '../../utils/AppContext';
 
 const SearchResultItem = (props) => {
   const router = useRouter();
-  const { title, text, uri, searchQuery } = props;
+  const { title, text, uri } = props;
+  const { searchQuery } = useContext(AppContext);
 
   return (
     (title.includes(searchQuery.toLowerCase().trim()) || text.includes(searchQuery.toLowerCase().trim())) &&
