@@ -1,29 +1,42 @@
-# Next.js + Tailwind CSS Example
+# Search
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+### Objective
+Develop a single page web application designed to allow users to search for information on the website, given Search and Suggestion API endpoints.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+---
 
-## Preview
-
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
+### Set-Up
+Enter the following commands to install node modules and required dependencies, before running the frontend:
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+yarn
+```
+```bash
+yarn dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Navigate to http://localhost:3000 to interact with the application.
+
+---
+
+### Testing
+Enter the following command run tests using Jest:
+```bash
+yarn test
+```
+
+---
+
+### Assumptions on Requirements
+1. Presence of whitespace before and after a **single** word input does not affect its suggestion and search results.
+2. Search and suggestion results are case-insensitive.
+3. The total number of results obtained from the API (100) can be overlooked, in place of the number of actual results rendered according to the search query.
+4. Clearing the search bar does not clear current search results rendered on the screen.
+5. **Titles** of search results that include search term do not need to be bolded. Only parts of the **excerpt text** that include search terms are required to be bolded.
+6. If no search results are found, the section of results is left empty. No placeholder is required.
+7. If a search term contains multiple words, the search results must contain **all** words in the **same order**.
+8. When pressing up and down arrow keys on the list of suggestions, the text in the search input is not required to change accordingly.
+
+---
+
+### Technologies Used
+Next.js, Tailwind CSS
