@@ -8,7 +8,8 @@ const SearchBar = () => {
   const [focused, setFocused] = useState(false);
   const { searchInput, setSearchInput, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible } = useContext(AppContext);
 
-  const useFocus = () => {  // set cursor focus after clearing search
+  // set cursor focus after clearing search
+  const useFocus = () => { 
     const htmlElRef = useRef(null)
     const setFocus = () => {
       htmlElRef.current && htmlElRef.current.focus();
@@ -76,7 +77,6 @@ const SearchBar = () => {
             <div className="w-36" />
           </div>
         }
-
       </div>
 
       <div className="bg-white shadow-search flex w-full items-center h-28 px-44" />
