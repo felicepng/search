@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import fetchSearchData from "../../data/fetchSearchData";
 import SearchResultItem from './SearchResultItem';
 import { AppContext } from '../../utils/AppContext';
+import _ from 'lodash';
 
 const PAGE_LIMIT = 10;
 

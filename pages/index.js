@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import SearchBar from '../components/search/SearchBar';
 import SearchResults from '../components/search/SearchResults';
-import _ from 'lodash';
 import { AppProvider }  from '../utils/AppContext';
 
 export default function Home() {

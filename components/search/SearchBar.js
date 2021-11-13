@@ -1,4 +1,4 @@
-import { useState, useContext, useRef } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { IoSearchSharp } from 'react-icons/io5';
 import { MdOutlineClear } from 'react-icons/md';
 import SuggestionResults from '../suggestion/SuggestionResults';
@@ -6,10 +6,11 @@ import { AppContext } from '../../utils/AppContext';
 
 const SearchBar = () => {
   const [focused, setFocused] = useState(false);
-  const { searchInput, setSearchInput, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible } = useContext(AppContext);
+  const { searchInput, setSearchInput, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible, filteredSuggestionLength, activeQuery } = useContext(AppContext);
+  const [activeKey, setActiveKey] = useState(-1);
 
   // set cursor focus after clearing search
-  const useFocus = () => { 
+  const useFocus = () => {
     const htmlElRef = useRef(null)
     const setFocus = () => {
       htmlElRef.current && htmlElRef.current.focus();
@@ -36,17 +37,24 @@ const SearchBar = () => {
             <div className="flex w-full items-center">
               <input ref={inputRef} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
                 onChange={e => setSearchInput(e.target.value)}
-                onKeyPress={e => {
+                onKeyDown={e => {
                   if (e.key === 'Enter') {
-                    setSearchQuery(e.target.value);
-                    setIsSuggestionVisible(false);
+                    if (activeKey !== -1) {  // if user is selecting option from suggestions using arrow keys
+                      setSearchInput(activeQuery);
+                      setSearchQuery(activeQuery);
+                      setIsSuggestionVisible(false);
+                      setActiveKey(-1);
+                    } else {  // if user is querying for search input
+                      setSearchQuery(e.target.value);
+                      setIsSuggestionVisible(false);
+                    }
                   } else {
                     setIsSuggestionVisible(true);
-                    // if (e.key === 'ArrowUp') {  // "up key"
-                    //   console.log('Up');
-                    // } else if (e.key === 'ArrowDown') {  // "down" key
-                    //   console.log('Down');
-                    // }
+                    if (e.key === 'ArrowUp') {  // "up" key
+                      setActiveKey(activeKey > 0 ? activeKey - 1 : 0);
+                    } else if (e.key === 'ArrowDown') {  // "down" key
+                      setActiveKey(activeKey < filteredSuggestionLength - 1 ? activeKey + 1 : filteredSuggestionLength - 1);
+                    }
                   }
                 }}
                 onClick={() => setIsSuggestionVisible(true)}
@@ -73,7 +81,7 @@ const SearchBar = () => {
         {
           searchInput.length > 2 && isSuggestionVisible &&
           <div className="flex items-center justify-center w-full">
-            <SuggestionResults />
+            <SuggestionResults activeKey={activeKey} />
             <div className="w-36" />
           </div>
         }

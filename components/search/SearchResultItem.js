@@ -1,13 +1,10 @@
-import { useContext } from 'react';
 import { useRouter } from "next/router";
-import { AppContext } from '../../utils/AppContext';
 import boldSearch from '../../utils/boldSearch';
 import _ from 'lodash';
 
 const SearchResultItem = (props) => {
   const router = useRouter();
   const { title, text, highlights, uri } = props;
-  const { searchQuery } = useContext(AppContext);
 
   return (
     <div className="w-full pt-4 pb-5">
