@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import boldSearchInput from '../../utils/boldSearchInput';
+import boldSuggestion from '../../utils/boldSuggestion';
 import fetchSuggestionData from '../../data/fetchSuggestionData';
 import { AppContext } from '../../utils/AppContext';
 import _ from 'lodash';
@@ -30,7 +30,7 @@ const SuggestionResults = () => {
               setIsSuggestionVisible(false);
             }}
           >
-            <div dangerouslySetInnerHTML={{ __html: boldSearchInput(item, searchInput.toLowerCase().trim()) }} />
+            <div dangerouslySetInnerHTML={{ __html: boldSuggestion(item, searchInput.toLowerCase().trim()) }} />
           </div>
         ))
       }

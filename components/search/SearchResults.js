@@ -22,7 +22,7 @@ const SearchResults = () => {
             </div>
             {
               searchData?.ResultItems?.map(item => (
-                <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} />
+                <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} highlights={item.DocumentExcerpt.Highlights} uri={item.DocumentURI} searchQuery={searchQuery} />
               ))
             }
           </div>
