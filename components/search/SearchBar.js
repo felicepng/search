@@ -7,7 +7,7 @@ import useComponentVisible from '../../utils/useComponentVisible';
 
 const SearchBar = () => {
   const [focused, setFocused] = useState(false);
-  const { searchInput, setSearchInput, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible, filteredSuggestionLength, activeQuery } = useContext(AppContext);
+  const { searchInput, setSearchInput, prevSearchQuery, setPrevSearchQuery, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible, filteredSuggestionLength, activeQuery } = useContext(AppContext);
   const [activeKey, setActiveKey] = useState(-1);
   const { ref, isComponentVisible } = useComponentVisible(true);
 
@@ -22,6 +22,23 @@ const SearchBar = () => {
   }
 
   const [inputRef, setInputFocus] = useFocus()
+
+  const onEnterKey = (e) => {
+    if (activeKey !== -1) {  // if user is selecting option from suggestion dropdown
+      if (activeQuery) {
+        setSearchInput(activeQuery);
+        setSearchQuery(activeQuery);
+        setPrevSearchQuery(activeQuery);
+      } else {
+        setSearchInput(prevSearchQuery);
+        setSearchQuery(prevSearchQuery);
+      }
+      setActiveKey(-1);
+    } else {  // if user is querying for search input
+      setSearchQuery(e.target.value);
+    }
+    setIsSuggestionVisible(false);
+  }
 
   return (
     <div className="z-50 sticky top-0 w-full">
@@ -41,15 +58,7 @@ const SearchBar = () => {
                 onChange={e => setSearchInput(e.target.value)}
                 onKeyDown={e => {
                   if (e.key === 'Enter') {
-                    if (activeKey !== -1) {  // if user is selecting option from suggestions using arrow keys
-                      setSearchInput(activeQuery);
-                      setSearchQuery(activeQuery);
-                      setIsSuggestionVisible(false);
-                      setActiveKey(-1);
-                    } else {  // if user is querying for search input
-                      setSearchQuery(e.target.value);
-                      setIsSuggestionVisible(false);
-                    }
+                    onEnterKey(e);
                   } else {
                     setIsSuggestionVisible(true);
                     if (e.key === 'ArrowUp') {  // "up" key

@@ -3,6 +3,7 @@ export const AppContext = createContext();
 
 export const AppProvider = props => {
   const [searchInput, setSearchInput] = useState("");
+  const [prevSearchQuery, setPrevSearchQuery] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchQueryResults, setSearchQueryResults] = useState("");
   const [isSuggestionVisible, setIsSuggestionVisible] = useState(false);
@@ -12,6 +13,7 @@ export const AppProvider = props => {
   return (
     <AppContext.Provider value={{
       searchInput, setSearchInput,
+      prevSearchQuery, setPrevSearchQuery,
       searchQuery, setSearchQuery,
       searchQueryResults, setSearchQueryResults,
       isSuggestionVisible, setIsSuggestionVisible,
