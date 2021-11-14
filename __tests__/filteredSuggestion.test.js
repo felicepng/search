@@ -12,11 +12,11 @@ describe("Filter suggestion", () => {
     expect(filteredSuggestion(input, "CHILD").length).toEqual(6);
   });
 
-  it("should filter despite leading and trailing whitespaces", () => {
+  it("should ignore leading and trailing whitespaces", () => {
     expect(filteredSuggestion(input, "  Child  ").length).toEqual(6);
   });
 
-  it("should filter correctly for terms excluding child", () => {
-    expect(filteredSuggestion(input, "dev").length).toEqual(1);
+  it("should filter correctly even for terms excluding child", () => {
+    expect(filteredSuggestion(input, "develop").length).toEqual(1);
   });
 });
