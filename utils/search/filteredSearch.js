@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 export const filteredSearch = (searchData, searchQuery) => {
-  // split into array in the case that searchQuery has multiple words
+  // split into array in the case that search query has multiple words
   const searchTerms = searchQuery.split(" ");
 
   // check if every search term appears in either title or text

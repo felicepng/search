@@ -1,5 +1,5 @@
-const filteredSearch = require('../utils/filteredSearch');
-import Search from '../data/queryResult.json'
+const filteredSearch = require('../../utils/search/filteredSearch');
+import Search from '../../data/search/queryResult.json'
 
 describe("Filter search", () => {
   const input = Search;

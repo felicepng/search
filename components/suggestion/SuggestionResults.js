@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
-import boldSuggestion from '../../utils/boldSuggestion';
-import fetchSuggestionData from '../../data/fetchSuggestionData';
+import boldSuggestion from '../../utils/suggestion/boldSuggestion';
+import fetchSuggestionData from '../../data/suggestion/fetchSuggestionData';
 import { AppContext } from '../../utils/AppContext';
-import filteredSuggestion from '../../utils/filteredSuggestion';
+import filteredSuggestion from '../../utils/suggestion/filteredSuggestion';
 
 const SUGGESTION_LIMIT = 6;
 

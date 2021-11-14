@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
-import fetchSearchData from "../../data/fetchSearchData";
+import fetchSearchData from "../../data/search/fetchSearchData";
 import SearchResultItem from './SearchResultItem';
 import { AppContext } from '../../utils/AppContext';
-import filteredSearch from '../../utils/filteredSearch';
+import filteredSearch from '../../utils/search/filteredSearch';
 
 const PAGE_LIMIT = 10;
 
