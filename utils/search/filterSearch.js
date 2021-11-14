@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export const filteredSearch = (searchData, searchQuery) => {
+export const filterSearch = (searchData, searchQuery) => {
   // split into array in the case that search query has multiple words
   const searchTerms = searchQuery.split(" ");
 
@@ -10,4 +10,4 @@ export const filteredSearch = (searchData, searchQuery) => {
   })
 }
 
-module.exports = filteredSearch;
+module.exports = filterSearch;

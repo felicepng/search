@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import fetchSearchData from "../../data/search/fetchSearchData";
 import SearchResultItem from './SearchResultItem';
 import { AppContext } from '../../utils/AppContext';
-import filteredSearch from '../../utils/search/filteredSearch';
+import filterSearch from '../../utils/search/filterSearch';
 
 const PAGE_LIMIT = 10;
 
@@ -10,7 +10,7 @@ const SearchResults = () => {
   const [searchData, setSearchData] = useState([]);
   const { searchQuery } = useContext(AppContext);
 
-  const len = filteredSearch(searchData, searchQuery).length;
+  const len = filterSearch(searchData, searchQuery).length;
 
   useEffect(() => {
     fetchSearchData(setSearchData);
@@ -38,7 +38,7 @@ const SearchResults = () => {
                 </div>
             }
             {
-              filteredSearch(searchData, searchQuery)?.map(item => (
+              filterSearch(searchData, searchQuery)?.map(item => (
                 <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} highlights={item.DocumentExcerpt.Highlights} uri={item.DocumentURI} searchQuery={searchQuery} />
               ))
             }
