@@ -51,7 +51,7 @@ const SearchBar = () => {
         onClick={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       >
-        <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${focused ? 'border-theme' : 'border-gray-400'}`}>
+        <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${searchInput.length > 2 && isSuggestionVisible && isComponentVisible && 'rounded-bl-none'} ${focused ? 'border-theme' : 'border-gray-400'}`}>
           <div className="flex flex-col w-full justify-between items-center px-5">
             <div className="flex w-full items-center">
               <input ref={inputRef} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
