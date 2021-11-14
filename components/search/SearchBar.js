@@ -7,8 +7,8 @@ import useComponentVisible from '../../utils/useComponentVisible';
 
 const SearchBar = () => {
   const [focused, setFocused] = useState(false);
-  const { searchInput, setSearchInput, prevSearchQuery, setPrevSearchQuery, setSearchQuery, isSuggestionVisible, setIsSuggestionVisible, filteredSuggestionLength, activeQuery } = useContext(AppContext);
-  const [activeKey, setActiveKey] = useState(-1);
+  const [prevSearchQuery, setPrevSearchQuery] = useState("");
+  const { searchInput, setSearchInput, setSearchQuery, filteredSuggestionLength, activeQuery, activeKey, setActiveKey, isSuggestionVisible, setIsSuggestionVisible } = useContext(AppContext);
   const { ref, isComponentVisible } = useComponentVisible(true);
 
   // set cursor focused after clearing search
@@ -92,7 +92,7 @@ const SearchBar = () => {
         {
           searchInput.length > 2 && isSuggestionVisible && isComponentVisible &&
           <div className="-mt-3 md:mt-0 scale-90 md:scale-100 flex items-center justify-center w-full">
-            <SuggestionResults activeKey={activeKey} />
+            <SuggestionResults />
             <div className="w-36" />
           </div>
         }

@@ -6,10 +6,9 @@ import filterSuggestion from '../../utils/suggestion/filterSuggestion';
 
 const SUGGESTION_LIMIT = 6;
 
-const SuggestionResults = (props) => {
+const SuggestionResults = () => {
   const [suggestionData, setSuggestionData] = useState([]);
-  const { searchInput, setSearchInput, setSearchQuery, setIsSuggestionVisible, setFilteredSuggestionLength, setActiveQuery } = useContext(AppContext);
-  const { activeKey } = props;
+  const { searchInput, setSearchInput, setSearchQuery, setFilteredSuggestionLength, setActiveQuery, activeKey, setIsSuggestionVisible  } = useContext(AppContext);
 
   useEffect(() => {
     fetchSuggestionData(setSuggestionData);
