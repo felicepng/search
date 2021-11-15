@@ -22,6 +22,7 @@ const SearchBar = () => {
   }
 
   const [inputRef, setInputFocus] = useFocus()
+  const showSuggestionResults = searchInput.length > 2 && isSuggestionVisible && isComponentVisible;
 
   const onEnterKey = (e) => {
     if (activeKey !== -1) {  // if user is selecting option from suggestion dropdown
@@ -51,7 +52,7 @@ const SearchBar = () => {
         onClick={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       >
-        <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${searchInput.length > 2 && isSuggestionVisible && isComponentVisible && 'rounded-bl-none'} ${focused ? 'border-theme' : 'border-gray-400'}`}>
+        <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${showSuggestionResults && filteredSuggestionLength > 0 && 'rounded-bl-none'} ${focused ? 'border-theme' : 'border-gray-400'}`}>
           <div className="flex flex-col w-full justify-between items-center px-5">
             <div className="flex w-full items-center">
               <input ref={inputRef} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
@@ -90,7 +91,7 @@ const SearchBar = () => {
         </div>
 
         {
-          searchInput.length > 2 && isSuggestionVisible && isComponentVisible &&
+          showSuggestionResults &&
           <div className="-mt-3 md:mt-0 scale-90 md:scale-100 flex items-center justify-center w-full">
             <SuggestionResults />
             <div className="w-36" />
