@@ -3,6 +3,7 @@ import fetchSearchData from "../../data/search/fetchSearchData";
 import SearchResultItem from './SearchResultItem';
 import { AppContext } from '../../utils/AppContext';
 import filterSearch from '../../utils/search/filterSearch';
+import getSearchIndices from '../../utils/search/getSearchIndices';
 
 const PAGE_LIMIT = 10;
 
@@ -39,7 +40,7 @@ const SearchResults = () => {
             }
             {
               filterSearch(searchData, searchQuery)?.map(item => (
-                <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} highlights={item.DocumentExcerpt.Highlights} uri={item.DocumentURI} searchQuery={searchQuery} />
+                <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} indices={getSearchIndices(item.DocumentExcerpt.Text, searchQuery)} />
               ))
             }
           </div>
