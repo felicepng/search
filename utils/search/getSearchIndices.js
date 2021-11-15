@@ -3,6 +3,10 @@ import _ from "lodash";
 export const getSearchIndices = (excerpt, searchQuery) => {
   // split into array in the case that search query has multiple words
   var searchTerms = searchQuery.split(" ");
+
+  // remove empty string, in the case of multiple whitespaces
+  _.remove(searchTerms, searchTerm => { return searchTerm.length === 0 });
+  
   const indices = [];
 
   searchTerms.map(searchTerm => {
