@@ -5,7 +5,7 @@ export const getSearchIndices = (excerpt, searchQuery) => {
   var searchTerms = searchQuery.split(" ");
 
   // remove empty string, in the case of multiple whitespaces
-  _.remove(searchTerms, searchTerm => { return searchTerm.length === 0 });
+  _.remove(searchTerms, searchTerm => { return searchTerm.length < 3 });
   
   const indices = [];
 
