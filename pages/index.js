@@ -6,32 +6,32 @@ import { AppProvider } from '../utils/AppContext';
 import { Spin } from 'antd';
 
 export default function Home() {
-  const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+    useEffect(() => {
+        setLoaded(true);
+    }, []);
 
-  return (
-    loaded ?
-      <AppProvider>
-        <div className="font-body flex flex-col items-center justify-start min-h-screen min-w-screen">
-          <Head>
-            <title>Search</title>
-            <link rel="icon" href="/logo.png" />
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-          </Head>
+    return (
+        loaded ?
+            <AppProvider>
+                <div className="font-body flex flex-col items-center justify-start min-h-screen min-w-screen">
+                    <Head>
+                        <title>Search</title>
+                        <link rel="icon" href="/logo.png" />
+                        <link rel="preconnect" href="https://fonts.googleapis.com" />
+                        <link rel="preconnect" href="https://fonts.gstatic.com" />
+                        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+                    </Head>
 
-          <SearchBar />
-          <SearchResults />
+                    <SearchBar />
+                    <SearchResults />
 
-        </div>
-      </AppProvider>
-      :
-      <div className="w-screen h-screen flex justify-center items-center">
-        <Spin />
-      </div>
-  )
+                </div>
+            </AppProvider>
+            :
+            <div className="w-screen h-screen flex justify-center items-center">
+                <Spin />
+            </div>
+    )
 }
