@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import SearchBar from '../components/search/SearchBar';
-import SearchResults from '../components/search/SearchResults';
-import { AppProvider } from '../utils/AppContext';
-import { Spin } from 'antd';
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import SearchBar from "../components/search/SearchBar";
+import SearchResults from "../components/search/SearchResults";
+import { AppProvider } from "../utils/context/AppContext";
+import { Spin } from "antd";
 
 export default function Home() {
     const [loaded, setLoaded] = useState(false);

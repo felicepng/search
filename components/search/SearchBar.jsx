@@ -1,9 +1,9 @@
-import { useState, useContext, useRef } from 'react';
-import { IoSearchSharp } from 'react-icons/io5';
-import { MdOutlineClear } from 'react-icons/md';
-import SuggestionResults from '../suggestion/SuggestionResults';
-import { AppContext } from '../../utils/AppContext';
-import useComponentVisible from '../../utils/useComponentVisible';
+import { useState, useContext, useRef } from "react";
+import { IoSearchSharp } from "react-icons/io5";
+import { MdOutlineClear } from "react-icons/md";
+import SuggestionResults from "../suggestion/SuggestionResults";
+import { AppContext } from "../../utils/context/AppContext";
+import useComponentVisible from "../../utils/hooks/useComponentVisible";
 
 const SearchBar = () => {
     const [focused, setFocused] = useState(false);
@@ -52,19 +52,19 @@ const SearchBar = () => {
                 onClick={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
             >
-                <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${showSuggestionResults && filteredSuggestionLength > 0 && 'rounded-bl-none'} ${focused ? 'border-theme' : 'border-gray-400'}`}>
+                <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${showSuggestionResults && filteredSuggestionLength > 0 && "rounded-bl-none"} ${focused ? "border-theme" : "border-gray-400"}`}>
                     <div className="flex flex-col w-full justify-between items-center px-5">
                         <div className="flex w-full items-center">
                             <input ref={inputRef} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
                                 onChange={e => setSearchInput(e.target.value)}
                                 onKeyDown={e => {
-                                    if (e.key === 'Enter') {
+                                    if (e.key === "Enter") {
                                         onEnterKey(e);
                                     } else {
                                         setIsSuggestionVisible(true);
-                                        if (e.key === 'ArrowUp') {  // "up" key
+                                        if (e.key === "ArrowUp") {  // "up" key
                                             setActiveKey(activeKey > 0 ? activeKey - 1 : 0);
-                                        } else if (e.key === 'ArrowDown') {  // "down" key
+                                        } else if (e.key === "ArrowDown") {  // "down" key
                                             setActiveKey(activeKey < filteredSuggestionLength - 1 ? activeKey + 1 : filteredSuggestionLength - 1);
                                         }
                                     }

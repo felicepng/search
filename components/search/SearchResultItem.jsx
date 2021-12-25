@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import boldSearch from '../../utils/search/boldSearch';
+import boldSearch from "../../utils/search/boldSearch";
 
 const SearchResultItem = (props) => {
     const router = useRouter();

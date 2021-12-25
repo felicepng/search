@@ -1,5 +1,5 @@
-const filterSuggestion = require('../../utils/suggestion/filterSuggestion');
-import Suggestion from '../../data/suggestion/suggestion.json'
+const filterSuggestion = require("../../utils/suggestion/filterSuggestion");
+import Suggestion from "../../data/suggestion/suggestion.json"
 
 describe("Filter suggestion", () => {
     const input = Suggestion;

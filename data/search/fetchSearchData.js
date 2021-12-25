@@ -17,7 +17,6 @@ const fetchSearchData = (setSearchData) => {
                 console.log(e.request);
             } else {
                 // something happened in setting up the request that triggered an error
-                console.log('Error', e.message);
                 console.log("Error in fetchSearchData: " + e.message)
             }
             console.log(e.config);

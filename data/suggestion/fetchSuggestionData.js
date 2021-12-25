@@ -17,7 +17,6 @@ const fetchSuggestionData = (setSuggestionData) => {
                 console.log(e.request);
             } else {
                 // something happened in setting up the request that triggered an error
-                console.log('Error', e.message);
                 console.log("Error in fetchSuggestionData: " + e.message)
             }
             console.log(e.config);

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 export const filterSearch = (searchData, searchQuery) => {
     // split into array in the case that search query has multiple words
