@@ -15,6 +15,7 @@ yarn dev
 ```
 
 Navigate to http://localhost:3000 using Safari or Google Chrome to interact with the application.
+Alternatively, the application is deployed with Vercel at https://search-2rdek2das-felicepng.vercel.app
 
 ---
 
