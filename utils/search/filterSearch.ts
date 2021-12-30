@@ -14,4 +14,4 @@ export const filterSearch = (searchData: DataType, searchQuery: string) => {
     })
 }
 
-export { filterSearch as default };
+export default filterSearch;

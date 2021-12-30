@@ -9,4 +9,4 @@ export const filterSuggestion = (suggestionData: DataType, searchInput: string) 
     return item.toLowerCase().includes(searchInput.toLowerCase().trim());
 })
 
-export { filterSuggestion as default };
+export default filterSuggestion;

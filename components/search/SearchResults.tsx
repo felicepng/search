@@ -27,7 +27,6 @@ const SearchResults = () => {
                 {
                     searchQuery !== "" &&
                     <div>
-                        {/* assuming number of total results shown changes dynamically according to search query */}
                         {
                             len !== 0
                                 ?

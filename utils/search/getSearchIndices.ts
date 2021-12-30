@@ -32,4 +32,4 @@ export const getSearchIndices = (excerpt: string, searchQuery: string) => {
     return sorted;
 }
 
-export { getSearchIndices as default };
+export default getSearchIndices;
