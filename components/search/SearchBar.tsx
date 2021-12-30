@@ -43,12 +43,12 @@ const SearchBar = () => {
 
     return (
         <div className="z-50 sticky top-0 w-full flex-none">
-            <div className="flex h-6 bg-header text-gray-500 items-center text-xxs pl-16 md:pl-32 lg:pl-40">
+            <div className="flex h-6 bg-header text-gray-500 items-center text-xxs pl-12 md:pl-32 lg:pl-40">
                 <img src="/logo.png" className="w-4 mr-1" />
                 An Official Website of the <span className="font-semibold ml-1"> Singapore Government</span>
             </div>
 
-            <div ref={ref} className="text-sm absolute z-50 flex flex-col w-full items-center px-10 md:px-32 lg:px-40 pt-6 md:pt-8"
+            <div ref={ref} className="text-sm absolute z-50 flex flex-col w-full items-center px-6 md:px-32 lg:px-40 pt-6 md:pt-8"
                 onClick={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
             >
