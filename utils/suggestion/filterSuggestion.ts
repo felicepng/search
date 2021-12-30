@@ -1,11 +1,8 @@
 import _ from "lodash";
-
-interface DataType {
-    suggestions: string[];
-}
+import { SuggestionDataType } from "../../data/types";
 
 // filter suggestions based on search input
-export const filterSuggestion = (suggestionData: DataType, searchInput: string) => _.filter(suggestionData?.suggestions, (item: string) => {
+export const filterSuggestion = (suggestionData: SuggestionDataType, searchInput: string) => _.filter(suggestionData?.suggestions, (item: string) => {
     return item.toLowerCase().includes(searchInput.toLowerCase().trim());
 })
 

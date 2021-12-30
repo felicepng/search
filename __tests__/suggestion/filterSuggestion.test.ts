@@ -1,8 +1,9 @@
 import filterSuggestion from "../../utils/suggestion/filterSuggestion";
 import Suggestion from "../../data/suggestion/suggestion.json"
+import { SuggestionDataType } from "../../data/types"
 
 describe("Filter suggestion", () => {
-    const input = Suggestion;
+    const input: SuggestionDataType = Suggestion;
 
     it("should filter by lowercase", () => {
         expect(filterSuggestion(input, "child").length).toEqual(6);

@@ -1,8 +1,9 @@
 import filterSearch from "../../utils/search/filterSearch";
 import Search from "../../data/search/queryResult.json"
+import { SearchDataType } from "../../data/types"
 
 describe("Filter search", () => {
-    const input = Search;
+    const input: SearchDataType = Search;
 
     it("should filter by lowercase", () => {
         expect(filterSearch(input, "child").length).toEqual(10);

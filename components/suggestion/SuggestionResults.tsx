@@ -3,19 +3,16 @@ import boldSuggestion from "../../utils/suggestion/boldSuggestion";
 import fetchSuggestionData from "../../data/suggestion/fetchSuggestionData";
 import { AppContext } from "../../utils/context/AppContext";
 import filterSuggestion from "../../utils/suggestion/filterSuggestion";
-
-interface DataType {
-    suggestions: string[];
-}
+import { SuggestionDataType } from "../../data/types"
 
 const SUGGESTION_LIMIT: number = 6;
 
 const SuggestionResults = () => {
-    const [suggestionData, setSuggestionData] = useState<DataType>();
+    const [suggestionData, setSuggestionData] = useState<SuggestionDataType>();
     const { searchInput, setSearchInput, setSearchQuery, setFilteredSuggestionLength, setActiveQuery, activeKey, setIsSuggestionVisible } = useContext(AppContext);
 
     useEffect(() => {
-        fetchSuggestionData(setSuggestionData as any);
+        fetchSuggestionData(setSuggestionData);
     }, [])
 
     // update active query based on arrow keys

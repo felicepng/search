@@ -1,13 +1,10 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
+import { SearchDataType } from "../types"
 
-interface DataType {
-    ResultItems: any[];
-}
-
-const fetchSearchData = (setSearchData: (setSearchData: DataType) => void) => {
+const fetchSearchData = (setSearchData: (searchData: SearchDataType) => void) => {
     axios.get("https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json")
         .then((response: AxiosResponse) => {
-            const mySearchData: DataType = response.data;
+            const mySearchData: SearchDataType = response.data;
             setSearchData(mySearchData);
         })
         .catch((e: AxiosError) => {

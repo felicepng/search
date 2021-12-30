@@ -4,15 +4,12 @@ import SearchResultItem from "./SearchResultItem";
 import { AppContext } from "../../utils/context/AppContext";
 import filterSearch from "../../utils/search/filterSearch";
 import getSearchIndices from "../../utils/search/getSearchIndices";
-
-interface DataType {
-    ResultItems: any[];
-}
+import { SearchDataType, ResultItem } from "../../data/types"
 
 const PAGE_LIMIT: number = 10;
 
 const SearchResults = () => {
-    const [searchData, setSearchData] = useState<DataType>();
+    const [searchData, setSearchData] = useState<SearchDataType>();
     const { searchQuery } = useContext(AppContext);
 
     const len: number = filterSearch(searchData, searchQuery).length;
@@ -42,7 +39,7 @@ const SearchResults = () => {
                                 </div>
                         }
                         {
-                            filterSearch(searchData, searchQuery)?.map((item: any) => (
+                            filterSearch(searchData, searchQuery)?.map((item: ResultItem) => (
                                 <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} indices={getSearchIndices(item.DocumentExcerpt.Text, searchQuery)} />
                             ))
                         }
