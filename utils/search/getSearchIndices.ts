@@ -1,21 +1,21 @@
 import _ from "lodash";
 
-export const getSearchIndices = (excerpt, searchQuery) => {
-    let searchTerms = searchQuery.split(" ");  // split into array in the case that search query has multiple words
+export const getSearchIndices = (excerpt: string, searchQuery: string) => {
+    let searchTerms: string[] = searchQuery.split(" ");  // split into array in the case that search query has multiple words
     _.remove(searchTerms, searchTerm => { return searchTerm.length === 0 });  // remove empty string, in the case of multiple whitespaces
     searchTerms = _.reverse(_.sortBy(searchTerms, [o => { return o.length; }]));  // sort by descending length of search term
 
-    const noSubstrings = [];  // create array to remove substrings of search terms
+    const noSubstrings: string[] = [];  // create array to remove substrings of search terms
 
-    searchTerms.map(searchTerm => {
+    searchTerms.forEach((searchTerm: string) => {
         if (!noSubstrings.some(o => o.includes(searchTerm))) {
             noSubstrings.push(searchTerm);
         }
     });
 
-    const indices = [];  // array to store start and end indices of each term
+    const indices: number[][][] = [];  // array to store start and end indices of each term
 
-    noSubstrings.map(searchTerm => {
+    noSubstrings.forEach(searchTerm => {
         // add start and end points to array for each search term
         indices.push([...excerpt.matchAll(new RegExp(searchTerm, "gi"))].map(o => [o.index, o.index + searchTerm.length]));
     })
@@ -32,4 +32,4 @@ export const getSearchIndices = (excerpt, searchQuery) => {
     return sorted;
 }
 
-module.exports = getSearchIndices;
+export { getSearchIndices as default };

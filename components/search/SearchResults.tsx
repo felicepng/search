@@ -5,13 +5,17 @@ import { AppContext } from "../../utils/context/AppContext";
 import filterSearch from "../../utils/search/filterSearch";
 import getSearchIndices from "../../utils/search/getSearchIndices";
 
-const PAGE_LIMIT = 10;
+interface DataType {
+    ResultItems: any[];
+}
+
+const PAGE_LIMIT: number = 10;
 
 const SearchResults = () => {
-    const [searchData, setSearchData] = useState([]);
+    const [searchData, setSearchData] = useState<DataType>();
     const { searchQuery } = useContext(AppContext);
 
-    const len = filterSearch(searchData, searchQuery).length;
+    const len: number = filterSearch(searchData, searchQuery).length;
 
     useEffect(() => {
         fetchSearchData(setSearchData);
@@ -39,7 +43,7 @@ const SearchResults = () => {
                                 </div>
                         }
                         {
-                            filterSearch(searchData, searchQuery)?.map(item => (
+                            filterSearch(searchData, searchQuery)?.map((item: any) => (
                                 <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} indices={getSearchIndices(item.DocumentExcerpt.Text, searchQuery)} />
                             ))
                         }

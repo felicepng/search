@@ -6,7 +6,7 @@ import { AppProvider } from "../utils/context/AppContext";
 import { Spin } from "antd";
 
 export default function Home() {
-    const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState<boolean>(false);
 
     useEffect(() => {
         setLoaded(true);

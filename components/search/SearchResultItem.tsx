@@ -1,7 +1,15 @@
 import { useRouter } from "next/router";
 import boldSearch from "../../utils/search/boldSearch";
 
-const SearchResultItem = (props) => {
+interface Props {
+    title: string;
+    text: string;
+    uri: string;
+    searchQuery: string;
+    indices: number[][];
+}
+
+const SearchResultItem = (props: Props) => {
     const router = useRouter();
     const { title, text, uri, indices } = props;
 

@@ -1,4 +1,4 @@
-const filterSearch = require("../../utils/search/filterSearch");
+import filterSearch from "../../utils/search/filterSearch";
 import Search from "../../data/search/queryResult.json"
 
 describe("Filter search", () => {

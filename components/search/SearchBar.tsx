@@ -6,14 +6,14 @@ import { AppContext } from "../../utils/context/AppContext";
 import useComponentVisible from "../../utils/hooks/useComponentVisible";
 
 const SearchBar = () => {
-    const [focused, setFocused] = useState(false);
-    const [prevSearchQuery, setPrevSearchQuery] = useState("");
+    const [focused, setFocused] = useState<boolean>(false);
+    const [prevSearchQuery, setPrevSearchQuery] = useState<string>("");
     const { searchInput, setSearchInput, setSearchQuery, filteredSuggestionLength, activeQuery, activeKey, setActiveKey, isSuggestionVisible, setIsSuggestionVisible } = useContext(AppContext);
     const { ref, isComponentVisible } = useComponentVisible(true);
 
     // set cursor focused after clearing search
     const useFocus = () => {
-        const htmlElRef = useRef(null)
+        const htmlElRef = useRef<HTMLElement>(null)
         const setFocus = () => {
             htmlElRef.current && htmlElRef.current.focus();
             setSearchInput("");
@@ -21,10 +21,10 @@ const SearchBar = () => {
         return [htmlElRef, setFocus]
     }
 
-    const [inputRef, setInputFocus] = useFocus()
-    const showSuggestionResults = searchInput.length > 2 && isSuggestionVisible && isComponentVisible;
+    const [inputRef, setInputFocus] = useFocus();
+    const showSuggestionResults: boolean = searchInput.length > 2 && isSuggestionVisible && isComponentVisible;
 
-    const onEnterKey = (e) => {
+    const onEnterKey = (e: KeyboardEvent) => {
         if (activeKey !== -1) {  // if user is selecting option from suggestion dropdown
             if (activeQuery) {
                 setSearchInput(activeQuery);
@@ -36,7 +36,7 @@ const SearchBar = () => {
             }
             setActiveKey(-1);
         } else {  // if user is querying for search input
-            setSearchQuery(e.target.value);
+            setSearchQuery((e.target as HTMLInputElement).value);
         }
         setIsSuggestionVisible(false);
     }
@@ -55,11 +55,11 @@ const SearchBar = () => {
                 <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${showSuggestionResults && filteredSuggestionLength > 0 && "rounded-bl-none"} ${focused ? "border-theme" : "border-gray-400"}`}>
                     <div className="flex flex-col w-full justify-between items-center px-5">
                         <div className="flex w-full items-center">
-                            <input ref={inputRef} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
+                            <input ref={inputRef as any} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
                                 onChange={e => setSearchInput(e.target.value)}
                                 onKeyDown={e => {
                                     if (e.key === "Enter") {
-                                        onEnterKey(e);
+                                        onEnterKey(e as any);
                                     } else {
                                         setIsSuggestionVisible(true);
                                         if (e.key === "ArrowUp") {  // "up" key
@@ -74,7 +74,7 @@ const SearchBar = () => {
                             {
                                 searchInput !== "" &&
                                 <MdOutlineClear className="w-5 h-5 text-secondary hover:text-black cursor-pointer"
-                                    onClick={setInputFocus}
+                                    onClick={setInputFocus as any}
                                 />
                             }
                         </div>
