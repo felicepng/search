@@ -43,7 +43,7 @@ const SearchBar = () => {
 
     return (
         <div className="z-50 sticky top-0 w-full flex-none">
-            <div className="flex h-6 bg-header text-gray-500 items-center text-xxs pl-12 md:pl-32 lg:pl-40">
+            <div className="flex h-6 bg-header text-gray-500 items-center text-xxs pl-10 md:pl-32 lg:pl-40">
                 <img src="/logo.png" className="w-4 mr-1" />
                 An Official Website of the <span className="font-semibold ml-1"> Singapore Government</span>
             </div>
