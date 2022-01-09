@@ -22,7 +22,12 @@ Alternatively, the application is deployed with Vercel [here](https://search-2rd
 ---
 
 ### Testing
-Enter the following command to run tests using Jest:
+Before testing, start up the frontend by typing the command:
+```bash
+yarn dev
+```
+
+Then, enter the following command to run end-to-end tests using Cypress in the Test Runner:
 ```bash
 yarn test
 ```
@@ -40,7 +45,7 @@ yarn test
 ---
 
 ### Technologies Used
-Next.js, Tailwind CSS
+Next.js, Tailwind CSS, Cypress
 
 ---
 

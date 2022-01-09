@@ -69,7 +69,7 @@ const SearchBar = () => {
         <div className={`md:scale-100 scale-90 flex items-center justify-center h-11 w-full border rounded-lg ${showSuggestionResults && filteredSuggestionLength > 0 && 'rounded-bl-none'} ${focused ? 'border-theme' : 'border-gray-400'}`}>
           <div className="flex flex-col w-full justify-between items-center px-5">
             <div className="flex w-full items-center">
-              <input ref={inputRef as any} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
+              <input id="searchBox" ref={inputRef as any} placeholder="Search..." value={searchInput} className="py-0 focus:outline-none w-full h-full"
                 onChange={e => setSearchInput(e.target.value)}
                 onKeyDown={e => {
                   if (e.key === 'Enter') {
@@ -93,7 +93,7 @@ const SearchBar = () => {
               }
             </div>
           </div>
-          <div className="font-medium cursor-pointer w-20 md:w-36 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white"
+          <div id="searchButton" className="font-medium cursor-pointer w-20 md:w-36 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white"
             onClick={() => {
               setSearchQuery(searchInput);
               setIsSuggestionVisible(false);
