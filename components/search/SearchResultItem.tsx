@@ -18,7 +18,7 @@ const SearchResultItem = (props: Props) => {
 
   return (
     <div className="search-result-item w-full pt-3 md:pt-4 pb-5">
-      <a target="_blank" href={uri} className="text-theme text-base md:text-lg font-medium cursor-pointer hover:underline hover:text-blue-700">
+      <a target="_blank" href={uri} className="text-theme text-base md:text-lg font-medium hover:underline hover:text-blue-700">
         {title}
       </a>
       <div className="text-secondary mt-2 leading-relaxed text-xs md:text-text">

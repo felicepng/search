@@ -8,8 +8,7 @@ import fetchSuggestionData from '../../data/suggestion/fetchSuggestionData';
 import { AppContext } from '../../utils/context/AppContext';
 import filterSuggestion from '../../utils/suggestion/filterSuggestion';
 import { SuggestionDataType } from '../../data/types';
-
-const SUGGESTION_LIMIT: number = 6;
+import { SUGGESTION_LIMIT } from '../../utils/constants/constants';
 
 const SuggestionResults = () => {
   const [suggestionData, setSuggestionData] = useState<SuggestionDataType>();

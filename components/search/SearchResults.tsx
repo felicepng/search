@@ -5,12 +5,11 @@ import {
 } from 'react';
 import fetchSearchData from '../../data/search/fetchSearchData';
 import { ResultItem, SearchDataType } from '../../data/types';
+import { SEARCH_LIMIT } from '../../utils/constants/constants';
 import { AppContext } from '../../utils/context/AppContext';
 import filterSearch from '../../utils/search/filterSearch';
 import getSearchIndices from '../../utils/search/getSearchIndices';
 import SearchResultItem from './SearchResultItem';
-
-const PAGE_LIMIT: number = 10;
 
 const SearchResults = () => {
   const [searchData, setSearchData] = useState<SearchDataType>();
@@ -31,7 +30,7 @@ const SearchResults = () => {
               len !== 0
                 ?
                 <div className="font-medium text-primary text-md md:text-lg mb-3">
-                  Showing 1-{len < PAGE_LIMIT ? len : PAGE_LIMIT} of {len} result{len !== 1 && 's'}
+                  Showing 1-{len < SEARCH_LIMIT ? len : SEARCH_LIMIT} of {len} result{len !== 1 && 's'}
                 </div>
                 :
                 // if no search results, show placeholder
@@ -42,8 +41,8 @@ const SearchResults = () => {
                 </div>
             }
             {
-              filterSearch(searchData, searchQuery)?.map((item: ResultItem) => (
-                <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} indices={getSearchIndices(item.DocumentExcerpt.Text, searchQuery)} />
+              filterSearch(searchData, searchQuery)?.map((item: ResultItem, index: number) => (
+                index < SEARCH_LIMIT && <SearchResultItem key={item.DocumentId} title={item.DocumentTitle.Text} text={item.DocumentExcerpt.Text} uri={item.DocumentURI} searchQuery={searchQuery} indices={getSearchIndices(item.DocumentExcerpt.Text, searchQuery)} />
               ))
             }
           </div>

@@ -36,6 +36,31 @@ describe('Search', () => {
     cy.get('.suggestion-result-item').should('have.length', 1)
   })
 
+  it('displays \'X\' button after typing 1 or more characters', async () => {
+    cy.get('#clear-icon').should('have.length', 0)
+    cy.get('#searchBox').type('c')
+    cy.get('#clear-icon').should('have.length', 1)
+  })
+
+  it('hides \'X\' button after clearing input', async () => {
+    cy.get('#searchBox').type('c')
+    cy.get('#searchBox').clear()
+    cy.get('#clear-icon').should('have.length', 0)
+  })
+
+  it('clears search input after clicking on \'X\' button', async () => {
+    cy.get('#searchBox').type('Chi')
+    cy.get('#searchBox').invoke('val').should('have.length', 3)
+    cy.get('#clear-icon').click()
+    cy.get('#searchBox').invoke('val').should('have.length', 0)
+  })
+
+  it('hides suggestion results after clicking on \'X\' button', async () => {
+    cy.get('#searchBox').type('Chi')
+    cy.get('#clear-icon').click()
+    cy.get('#suggestionResults').should('have.length', 0)
+  })
+
   it('has correct hover states for search box', async () => {
     cy.get('#searchButton').should('have.css', 'background-color', 'rgb(28, 118, 213)')
     cy.get('#searchButton').realHover().should('have.css', 'background-color', 'rgb(29, 78, 216)')

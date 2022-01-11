@@ -87,13 +87,13 @@ const SearchBar = () => {
               />
               {
                 searchInput !== '' &&
-                <MdOutlineClear className="w-5 h-5 text-secondary hover:text-black cursor-pointer"
+                <MdOutlineClear id="clear-icon" className="w-5 h-5 text-secondary hover:text-black cursor-pointer"
                   onClick={setInputFocus as any}
                 />
               }
             </div>
           </div>
-          <div id="searchButton" className="font-medium cursor-pointer w-20 md:w-36 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white"
+          <button id="searchButton" className="font-medium w-20 md:w-36 h-full flex items-center justify-center bg-theme hover:bg-blue-700 rounded-md text-white"
             onClick={() => {
               setSearchQuery(searchInput);
               setIsSuggestionVisible(false);
@@ -101,7 +101,7 @@ const SearchBar = () => {
           >
             <IoSearchSharp className="w-5 h-5 text-white md:mr-2" />
             <div className="hidden md:flex">Search</div>
-          </div>
+          </button>
         </div>
 
         {
