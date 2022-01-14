@@ -16,7 +16,7 @@ describe('Search', () => {
   })
 
   it('displays suggestion results after typing >2 characters', async () => {
-    cy.get('#suggestionResults').should('have.length', 0)
+    cy.get('#suggestionResults').should('not.exist')
     cy.get('#searchBox').type('Chi')
     cy.get('#suggestionResults').should('be.visible')
   })
@@ -37,7 +37,7 @@ describe('Search', () => {
   })
 
   it('displays \'X\' button after typing 1 or more characters', async () => {
-    cy.get('#clear-icon').should('have.length', 0)
+    cy.get('#clear-icon').should('not.exist')
     cy.get('#searchBox').type('c')
     cy.get('#clear-icon').should('have.length', 1)
   })
@@ -45,7 +45,7 @@ describe('Search', () => {
   it('hides \'X\' button after clearing input', async () => {
     cy.get('#searchBox').type('c')
     cy.get('#searchBox').clear()
-    cy.get('#clear-icon').should('have.length', 0)
+    cy.get('#clear-icon').should('not.exist')
   })
 
   it('clears search input after clicking on \'X\' button', async () => {
@@ -58,7 +58,7 @@ describe('Search', () => {
   it('hides suggestion results after clicking on \'X\' button', async () => {
     cy.get('#searchBox').type('Chi')
     cy.get('#clear-icon').click()
-    cy.get('#suggestionResults').should('have.length', 0)
+    cy.get('#suggestionResults').should('not.exist')
   })
 
   it('has correct hover states for search box', async () => {
