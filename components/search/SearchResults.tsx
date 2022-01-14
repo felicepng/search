@@ -21,7 +21,7 @@ const SearchResults = () => {
   }, []);
 
   return (
-    <div className={`w-full lg:grid px-12 md:px-32 lg:px-40 py-8 md:py-9 ${searchQuery !== '' && len !== 0 && 'lg:grid-cols-3'}`}>
+    <div className={`w-full lg:grid px-12 md:px-24 lg:px-40 py-8 md:py-9 ${searchQuery !== '' && len !== 0 && 'lg:grid-cols-3'}`}>
       <div className="col-span-2">
         {
           searchQuery !== '' &&
