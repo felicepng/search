@@ -37,8 +37,7 @@ const SuggestionResults = () => {
 
   return (
     <div id="suggestionResults" className="bg-white shadow-md rounded-b-lg h-full w-full">
-      {
-        filterSuggestion(suggestionData, searchInput).slice(0, SUGGESTION_LIMIT).map((item: string, index: number) => (
+      {filterSuggestion(suggestionData, searchInput).slice(0, SUGGESTION_LIMIT).map((item: string, index: number) => (
           <div key={index} className={`suggestion-result-item px-5 py-2.5 hover:bg-gray-100 cursor-pointer ${index === activeKey && 'bg-gray-100'}`}
             onClick={() => {
               setSearchQuery(item);

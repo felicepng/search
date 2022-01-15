@@ -84,8 +84,7 @@ const SearchBar = () => {
               }}
               onClick={() => setIsSuggestionVisible(true)}
             />
-            {
-              searchInput !== '' &&
+            {searchInput !== '' &&
               <MdOutlineClear id="clear-icon" className="w-5 h-5 text-secondary hover:text-black cursor-pointer"
                 onClick={setInputFocus as any}
               />
@@ -102,8 +101,7 @@ const SearchBar = () => {
           </button>
         </div>
 
-        {
-          showSuggestionResults &&
+        {showSuggestionResults &&
           <div className="-mt-3 md:mt-0 scale-90 md:scale-100 flex items-center justify-center w-full">
             <SuggestionResults />
             <div className="w-20 md:w-36" />
