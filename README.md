@@ -17,7 +17,7 @@ yarn dev
 Navigate to http://localhost:3000 using Safari or Google Chrome to interact with the application.
 <br />
 <br />
-Alternatively, the application is deployed with Vercel [here](https://search-2rdek2das-felicepng.vercel.app). Type any substring (>2 characters) of results from `suggestion.json` to display the suggestion dropdown.
+Alternatively, the application is deployed with Vercel [here](https://search-felicepng.vercel.app). Type any substring (>2 characters) of results from `suggestion.json` to display the suggestion dropdown.
 
 ---
 
